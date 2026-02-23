@@ -1,0 +1,50 @@
+# Path to this file
+SCRIPT_PATH="${(%):-%N}"
+# Resolve symlink (macOS-compatible)
+while [ -L "$SCRIPT_PATH" ]; do
+  SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
+done
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+export DOTFILES_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
+
+export SHELL="zsh"
+
+source "$DOTFILES_DIR/shell/common/aliases.sh"
+source "$DOTFILES_DIR/shell/common/functions.sh"
+
+
+
+source "$DOTFILES_DIR/tools/homebrew/init.sh"
+source "$DOTFILES_DIR/tools/starship/init.sh"
+source "$DOTFILES_DIR/tools/pyenv/init.sh"
+source "$DOTFILES_DIR/tools/nvm/init.sh"
+
+
+
+
+
+# # Initialize Zsh's completion system
+# autoload -Uz compinit
+
+# Lazy load syntax higlighting on first prompt
+autoload -Uz add-zsh-hook
+
+_lazy_load_highlight() {
+  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+  add-zsh-hook -d precmd _lazy_load_highlight
+}
+add-zsh-hook precmd _lazy_load_highlight
+
+# Load autosuggestions
+autoload -Uz compinit
+compinit -C
+_lazy_load_autosuggest() {
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  add-zsh-hook -d precmd _lazy_load_autosuggest
+}
+add-zsh-hook precmd _lazy_load_autosuggest
+
+
+# compinit -C # Skip compinit security checks (safe for single-user system)
+# zstyle ':completions:*' rehash false
+bindkey "^[[Z" end-of-line

@@ -1,0 +1,25 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = "$all"
+
+[git_branch]
+style = "bright-white"
+
+[character]
+success_symbol = "[❯❯❯](bold green)"
+error_symbol = "[❯❯❯](bold red)"
+
+[profiles]
+transient = """
+$character\
+"""
+
+rtransient="""
+$status\
+$cmd_duration\
+$time\
+"""
