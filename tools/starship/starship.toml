@@ -1,25 +1,115 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = true
+# format = """
+# [░▒▓](light_gray)\
+# [  ](bg:light_gray fg:black)\
+# [](bg:baby_blue_0 fg:light_gray)\
+# $directory\
+# [](fg:baby_blue_0 bg:baby_blue_1)\
+# $git_branch\
+# $git_status\
+# [](fg:baby_blue_1 bg:baby_blue_2)\
+# $nodejs\
+# $rust\
+# $golang\
+# $php\
+# [](fg:baby_blue_2 bg:baby_blue_3)\
+# $time\
+# [ ](fg:baby_blue_3)\
+# \n$character"""
 
-format = "$all"
+format = """
+$line_break
+ $directory \
+$git_branch\
+$git_state\
+$git_status\
+$line_break\
+$localip\
+$character
+"""
 
-[git_branch]
-style = "bright-white"
+right_format = """
+$python\
+$nodejs\
+$rust\
+"""
+
+palette = "minimal"
+
+[palettes.minimal]
+default = "#b3b3b3"
+dark_gray = "#7d7d7d"
+black = "#090c0c"
+baby_blue_0 = "#769ff0"
+baby_blue_1 = "#394260"
+baby_blue_2 = "#212736"
+baby_blue_3 = "#1d2230"
+white = "#e3e5e5"
+hazy_baby_blue = "#a0a9cb"
+python_blue = "#4280B2"
+python_yellow = "#FFD94A"
+nodejs_green = "#65B84A"
+rust_orange = "#ff976a"
+
+[fill]
+symbol = " "
+
+[localip]
+ssh_only = true
 
 [character]
-success_symbol = "[❯❯❯](bold green)"
-error_symbol = "[❯❯❯](bold red)"
+success_symbol = "[❯](bold default)"
+error_symbol = "[❯](bold red)"
 
-[profiles]
-transient = """
-$character\
-"""
+[directory]
+style = "fg:white bold"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-rtransient="""
-$status\
-$cmd_duration\
-$time\
-"""
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "fg:#909295"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "fg:#909295"
+format = '[($all_status$ahead_behind )]($style)'
+
+[python]
+symbol = ""
+style = "fg:python_yellow bg:python_blue"
+format = "[](fg:python_blue)[$symbol]($style)[ ($version)](fg:white bg:python_blue)[](fg:python_blue)[ ](fg:white)"
+
+[nodejs]
+symbol = ""
+style = "fg:black bg:nodejs_green"
+format = '[](fg:nodejs_green)[$symbol ($version)]($style)[](fg:nodejs_green)[ ](fg:white)'
+
+[rust]
+symbol = ""
+style = "fg:black bg:rust_orange"
+format = '[](fg:rust_orange)[$symbol ($version)]($style)[](fg:rust_orange)'
+
+[golang]
+symbol = ""
+style = "bg:baby_blue_2"
+format = '[[ $symbol ($version) ](fg:baby_blue_0 bg:baby_blue_2)]($style)'
+
+[php]
+symbol = ""
+style = "bg:baby_blue_2"
+format = '[[ $symbol ($version) ](fg:baby_blue_0 bg:baby_blue_2)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"                                                 # Hour:Minute Format
+style = "bg:baby_blue_3"
+format = '[[  $time ](fg:hazy_baby_blue bg:baby_blue_3)]($style)'

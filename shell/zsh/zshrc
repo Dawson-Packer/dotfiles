@@ -12,12 +12,16 @@ export SHELL="zsh"
 source "$DOTFILES_DIR/shell/common/aliases.sh"
 source "$DOTFILES_DIR/shell/common/functions.sh"
 
+if [[ -f "$DOTFILES_DIR/shell/zsh/zshrc.local" ]]; then
+  source "$DOTFILES_DIR/shell/zsh/zshrc.local"
+fi
 
 
+# Tools
 source "$DOTFILES_DIR/tools/homebrew/init.sh"
 source "$DOTFILES_DIR/tools/starship/init.sh"
 source "$DOTFILES_DIR/tools/pyenv/init.sh"
-source "$DOTFILES_DIR/tools/nvm/init.sh"
+source "$DOTFILES_DIR/tools/nodejs/init.sh"
 
 
 
@@ -29,21 +33,14 @@ source "$DOTFILES_DIR/tools/nvm/init.sh"
 # Lazy load syntax higlighting on first prompt
 autoload -Uz add-zsh-hook
 
-_lazy_load_highlight() {
-  source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-  add-zsh-hook -d precmd _lazy_load_highlight
-}
-add-zsh-hook precmd _lazy_load_highlight
 
-# Load autosuggestions
+# Plugins
+
 autoload -Uz compinit
 compinit -C
-_lazy_load_autosuggest() {
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  add-zsh-hook -d precmd _lazy_load_autosuggest
-}
-add-zsh-hook precmd _lazy_load_autosuggest
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+source "$DOTFILES_DIR/plugins/zsh-syntax-highlighting/init.sh"
 
 # compinit -C # Skip compinit security checks (safe for single-user system)
 # zstyle ':completions:*' rehash false

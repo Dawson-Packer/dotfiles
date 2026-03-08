@@ -1,7 +1,5 @@
 alias ll="ls -la"
-
 alias cl="clear"
-
+alias rmf="rm -rf"
 alias cu="cd .."
-
 alias ex="exec"
