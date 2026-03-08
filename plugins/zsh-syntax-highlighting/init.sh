@@ -2,9 +2,12 @@ _lazy_load_highlight() {
   source "$(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
   ZSH_HIGHLIGHT_STYLES[command]='fg=#fdc401,bold'
-  ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan,bold'
+  ZSH_HIGHLIGHT_STYLES[builtin]='fg=#fdc401,bold'
+  # ZSH_HIGHLIGHT_STYLES[builtin]='fg=cyan,bold'
+  ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#C485BF'
   ZSH_HIGHLIGHT_STYLES[alias]='fg=#61d7d7,bold'
   ZSH_HIGHLIGHT_STYLES[function]='fg=white'
+  ZSH_HIGHLIGHT_STYLES[globbing]='fg=#00c5c8'
   ZSH_HIGHLIGHT_STYLES[path]='fg=#e3e3e3'
   ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
   ZSH_HIGHLIGHT_STYLES[comment]='fg=8'
