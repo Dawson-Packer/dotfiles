@@ -20,6 +20,7 @@ source "$DOTFILES_DIR/shell/common/functions.sh"
 # Tools
 source "$DOTFILES_DIR/tools/homebrew/init.sh"
 source "$DOTFILES_DIR/tools/starship/init.sh"
+source "$DOTFILES_DIR/tools/esp-idf/init.sh"
 source "$DOTFILES_DIR/tools/pyenv/init.sh"
 source "$DOTFILES_DIR/tools/nodejs/init.sh"
 
