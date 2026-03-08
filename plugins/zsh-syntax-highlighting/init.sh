@@ -9,11 +9,15 @@ _lazy_load_highlight() {
   ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
   ZSH_HIGHLIGHT_STYLES[comment]='fg=8'
   ZSH_HIGHLIGHT_STYLES[string]='fg=#cabf76'
+  ZSH_HIGHLIGHT_STYLES[gitcommit_string]='fg=#cabf76'
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#cabf76'
   ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#cabf76'
   ZSH_HIGHLIGHT_STYLES[default]='fg=#b3b3b3'
 
-  ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#b3b3b3'
+  ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#607DD6'
   ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#7d7d7d'
+
+  ZSH_HIGHLIGHT_STYLES[precommand]='fg=#60D66F,bold,underline'
 
   add-zsh-hook -d precmd _lazy_load_highlight
 }

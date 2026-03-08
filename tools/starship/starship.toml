@@ -1,23 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# format = """
-# [░▒▓](light_gray)\
-# [  ](bg:light_gray fg:black)\
-# [](bg:baby_blue_0 fg:light_gray)\
-# $directory\
-# [](fg:baby_blue_0 bg:baby_blue_1)\
-# $git_branch\
-# $git_status\
-# [](fg:baby_blue_1 bg:baby_blue_2)\
-# $nodejs\
-# $rust\
-# $golang\
-# $php\
-# [](fg:baby_blue_2 bg:baby_blue_3)\
-# $time\
-# [ ](fg:baby_blue_3)\
-# \n$character"""
-
 format = """
 $line_break
  $directory \
@@ -25,6 +7,7 @@ $git_branch\
 $git_state\
 $git_status\
 $line_break\
+${custom.env_status}\
 $localip\
 $character
 """
@@ -55,6 +38,12 @@ rust_orange = "#ff976a"
 [fill]
 symbol = " "
 
+[custom.env_status]
+command = "source $DOTFILES_DIR/tools/starship/env_values.sh"
+when = true
+symbol = ""
+style = "green bold"
+
 [localip]
 ssh_only = true
 
@@ -84,7 +73,7 @@ style = "fg:#909295"
 format = '[($all_status$ahead_behind )]($style)'
 
 [python]
-symbol = ""
+symbol = "󱔎"
 style = "fg:python_yellow bg:python_blue"
 format = "[](fg:python_blue)[$symbol]($style)[ ($version)](fg:white bg:python_blue)[](fg:python_blue)[ ](fg:white)"
 

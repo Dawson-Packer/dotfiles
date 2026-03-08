@@ -1,0 +1,1 @@
+$DEVTOOLS_PATH/esp/esp-idf/export.sh

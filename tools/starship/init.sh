@@ -8,6 +8,10 @@ starship-profile() {
     eval "$(starship init $SHELL)"
 }
 
+reload_prompt() {
+    eval "$(starship init $SHELL)"
+}
+
 # # Enable Starship transient prompt
 # enable_transient_prompt() {
 #     emulate -L zsh

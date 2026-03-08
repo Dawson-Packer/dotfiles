@@ -8,13 +8,13 @@ SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
 export DOTFILES_DIR="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 export SHELL="zsh"
+if [[ -f "$DOTFILES_DIR/shell/zsh/zshrc.local" ]]; then
+  source "$DOTFILES_DIR/shell/zsh/zshrc.local"
+fi
 
 source "$DOTFILES_DIR/shell/common/aliases.sh"
 source "$DOTFILES_DIR/shell/common/functions.sh"
 
-if [[ -f "$DOTFILES_DIR/shell/zsh/zshrc.local" ]]; then
-  source "$DOTFILES_DIR/shell/zsh/zshrc.local"
-fi
 
 
 # Tools
