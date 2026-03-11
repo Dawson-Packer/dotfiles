@@ -1,0 +1,10 @@
+# Path to this file
+SCRIPT_PATH="${(%):-%N}"
+# Resolve symlink (macOS-compatible)
+while [ -L "$SCRIPT_PATH" ]; do
+  SCRIPT_PATH="$(readlink "$SCRIPT_PATH")"
+done
+SCRIPT_DIR="$(cd "$(dirname "$SCRIPT_PATH")" && pwd)"
+export DOTFILES_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+export SHELL="zsh"

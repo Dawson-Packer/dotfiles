@@ -16,6 +16,8 @@ right_format = """
 $python\
 $nodejs\
 $rust\
+$cmake\
+$dotnet\
 """
 
 palette = "minimal"
@@ -34,12 +36,17 @@ python_blue = "#4280B2"
 python_yellow = "#FFD94A"
 nodejs_green = "#65B84A"
 rust_orange = "#ff976a"
+cmake_red = "#f32834"
+cmake_blue = "#0068c7"
+cmake_green = "#3dae2b"
+cmake_black = "#484848"
+dotnet_purple = "#7779b9"
 
 [fill]
 symbol = " "
 
 [custom.env_status]
-command = "source $DOTFILES_DIR/tools/starship/env_values.sh"
+command = "source $DOTFILES_DIR/starship/env_values.sh"
 when = true
 symbol = ""
 style = "green bold"
@@ -85,20 +92,14 @@ format = '[](fg:nodejs_green)[$symbol ($version)]($style)[](fg:nodejs_gree
 [rust]
 symbol = ""
 style = "fg:black bg:rust_orange"
-format = '[](fg:rust_orange)[$symbol ($version)]($style)[](fg:rust_orange)'
+format = '[](fg:rust_orange)[$symbol ($version)]($style)[](fg:rust_orange)[ ](fg:white)'
 
-[golang]
-symbol = ""
-style = "bg:baby_blue_2"
-format = '[[ $symbol ($version) ](fg:baby_blue_0 bg:baby_blue_2)]($style)'
+[cmake]
+symbol = ""
+style = "fg:white bg:cmake_black"
+format = '[](fg:cmake_green)[$symbol](bg:cmake_blue fg:cmake_red)[ ($version)]($style)[](fg:cmake_black)[ ](fg:white)'
 
-[php]
-symbol = ""
-style = "bg:baby_blue_2"
-format = '[[ $symbol ($version) ](fg:baby_blue_0 bg:baby_blue_2)]($style)'
-
-[time]
-disabled = false
-time_format = "%R"                                                 # Hour:Minute Format
-style = "bg:baby_blue_3"
-format = '[[  $time ](fg:hazy_baby_blue bg:baby_blue_3)]($style)'
+[dotnet]
+symbol = ".ɴᴇᴛ"
+style = "fg:dotnet_purple bg:white"
+format = '[](fg:white)[$symbol ($version)]($style)[](fg:white)'

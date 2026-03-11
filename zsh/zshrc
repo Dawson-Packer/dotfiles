@@ -1,4 +1,27 @@
-has pyenv || return
+local zsh_dotfiles="$DOTFILES_DIR/zsh"
+
+if [[ -f "$zsh_dotfiles/zshrc.local" ]]; then
+    source "$zsh_dotfiles/zshrc.local"
+fi
+
+source "$zsh_dotfiles/common/functions.zsh"
+source "$zsh_dotfiles/common/aliases.zsh"
+source "$zsh_dotfiles/common/paths.zsh"
+
+
+
+source "$zsh_dotfiles/conf.d/toolchains.zsh"
+source "$zsh_dotfiles/conf.d/starship.zsh"
+source "$zsh_dotfiles/conf.d/esp-idf.zsh"
+
+
+
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+if type brew &>/dev/null; then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -20,3 +43,23 @@ pyenv-install-with-tk() {
     PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig:$(brew --prefix readline)/lib/pkgconfig:$(brew --prefix sqlite3)/lib/pkgconfig:$(brew --prefix xz)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig:$(brew --prefix tcl-tk)/lib/pkgconfig" \
     pyenv install $version
 }
+
+# # Initialize Zsh's completion system
+# autoload -Uz compinit
+
+# Lazy load syntax higlighting on first prompt
+autoload -Uz add-zsh-hook
+
+
+# Plugins
+
+autoload -Uz compinit
+compinit -C
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source "$zsh_dotfiles/plugins/zsh-syntax-highlighting.zsh"
+
+# compinit -C # Skip compinit security checks (safe for single-user system)
+# zstyle ':completions:*' rehash false
+bindkey "^[[Z" end-of-line
+eval "$(starship init "$SHELL")"
