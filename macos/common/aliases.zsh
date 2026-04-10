@@ -2,7 +2,7 @@
 if has eza; then
     alias ls='eza'
     alias la='eza -lahG'
-    alias ll='eza -lhG'X
+    alias ll='eza -lhG'
 else
     alias ll='ls -l'
     alias la="ls -la"

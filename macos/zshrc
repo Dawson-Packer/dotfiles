@@ -1,4 +1,4 @@
-local zsh_dotfiles="$DOTFILES_DIR/zsh"
+local zsh_dotfiles="$DOTFILES_DIR/macos"
 
 if [[ -f "$zsh_dotfiles/zshrc.local" ]]; then
     source "$zsh_dotfiles/zshrc.local"
@@ -13,6 +13,9 @@ source "$zsh_dotfiles/common/paths.zsh"
 source "$zsh_dotfiles/conf.d/toolchains.zsh"
 source "$zsh_dotfiles/conf.d/starship.zsh"
 source "$zsh_dotfiles/conf.d/esp-idf.zsh"
+source "$zsh_dotfiles/conf.d/cargo.zsh"
+source "$zsh_dotfiles/conf.d/npm.zsh"
+source "$zsh_dotfiles/conf.d/stm32cubeprogrammer.zsh"
 
 
 

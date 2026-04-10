@@ -1,10 +1,10 @@
 #~/usr/bin/env bash
 set -e
 
-SHELL_NAME="$1"
+OS_NAME="$1"
 
-if [[ -z "$SHELL_NAME" ]]; then
-    echo "Usage: ./install.sh [zsh|bash|powershell]"
+if [[ -z "$OS_NAME" ]]; then
+    echo "Usage: ./install.sh [macos|linux|windows]"
     exit 1
 fi
 
@@ -18,21 +18,17 @@ link_file() {
     ln -sf "$source" "$target"
 }
 
-case "$SHELL_NAME" in
-    zsh)
-        source "$DOTFILES_DIR/zsh/init.sh"
+case "$OS_NAME" in
+    macos)
+        source "$DOTFILES_DIR/macos/init.sh"
         ;;
-    bash)
-        source "$DOTFILES_DIR/bash/init.sh"
-        ;;
-    powershell)
-        echo "Run this from Powershell:"
-        echo "  ./powershell/init.ps1"
+    linux)
+        source "$DOTFILES_DIR/linux/init.sh"
         ;;
     *)
-        echo "Unsupported shell: $SHELL_NAME"
+        echo "Unsupported operating system: $OS_NAME"
         exit 1
         ;;
 esac
 
-echo "Done. Successfully initialized dotfiles for $SHELL_NAME. Restart your shell to apply changes."
+echo "Done. Successfully initialized dotfiles for $OS_NAME. Restart your shell to apply changes."
