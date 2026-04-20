@@ -1,0 +1,4 @@
+brew "gcc"
+brew "rustup-init"
+brew "ccache"
+brew "cmake"

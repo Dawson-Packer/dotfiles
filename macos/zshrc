@@ -1,24 +1,24 @@
-local zsh_dotfiles="$DOTFILES_DIR/macos"
+local macos_dotfiles="$DOTFILES_DIR/macos"
 
-if [[ -f "$zsh_dotfiles/zshrc.local" ]]; then
-    source "$zsh_dotfiles/zshrc.local"
+if [[ -f "$macos_dotfiles/zshrc.local" ]]; then
+    source "$macos_dotfiles/zshrc.local"
 fi
 
-source "$zsh_dotfiles/common/functions.zsh"
-source "$zsh_dotfiles/common/aliases.zsh"
-source "$zsh_dotfiles/common/paths.zsh"
+source "$macos_dotfiles/common/functions.zsh"
+source "$macos_dotfiles/common/aliases.zsh"
+source "$macos_dotfiles/common/paths.zsh"
 
 
 
-source "$zsh_dotfiles/conf.d/toolchains.zsh"
-source "$zsh_dotfiles/conf.d/starship.zsh"
-source "$zsh_dotfiles/conf.d/esp-idf.zsh"
-source "$zsh_dotfiles/conf.d/cargo.zsh"
-source "$zsh_dotfiles/conf.d/npm.zsh"
-source "$zsh_dotfiles/conf.d/stm32cubeprogrammer.zsh"
+source "$macos_dotfiles/conf.d/toolchains.zsh"
+source "$macos_dotfiles/conf.d/starship.zsh"
+source "$macos_dotfiles/conf.d/esp-idf.zsh"
+source "$macos_dotfiles/conf.d/cargo.zsh"
+source "$macos_dotfiles/conf.d/npm.zsh"
+source "$macos_dotfiles/conf.d/stm32cubeprogrammer.zsh"
 
 
-
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 
@@ -60,9 +60,8 @@ autoload -Uz compinit
 compinit -C
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source "$zsh_dotfiles/plugins/zsh-syntax-highlighting.zsh"
+source "$macos_dotfiles/plugins/zsh-syntax-highlighting.zsh"
 
 # compinit -C # Skip compinit security checks (safe for single-user system)
 # zstyle ':completions:*' rehash false
 bindkey "^[[Z" end-of-line
-eval "$(starship init "$SHELL")"
