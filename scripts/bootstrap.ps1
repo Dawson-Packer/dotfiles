@@ -1,19 +1,16 @@
-param {
-    [Parameter(Mandatory)]
-    [ValidateSet("windows")]
-    [string]$OSName
-}
+$ErrorActionPreference = "Stop"
 
-$ErrorActionPreferences = "Stop"
+$_dotfilesDir = Split-Path -Parent $PSScriptRoot
 
-$DotfilesDir = Split-Path -Parent $PSScriptRoot
+[Environment]::SetEnvironmentVariable("DOTFILES_DIR", $_dotfilesDir, "User") 
+$env:DOTFILES_DIR = $_dotfilesDir
 
 function Link-File {
     param (
-        [Parameter[Mandatory]]
+        [Parameter()]
         [string]$Source,
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [string]$Target
     )
 
@@ -35,10 +32,6 @@ function Link-File {
         -Target $Source | Out-Null
 }
 
-switch ($OSName) {
-    "windows" {
-        & "$DotfilesDir\windows\init.ps1" 
-    }
-}
+& "$_dotfilesDir\windows\init.ps1"
 
 Write-Host "Done. Successfully initialized dotfiles for Windows. Restart your shell to apply changes."
