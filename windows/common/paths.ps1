@@ -1,0 +1,1 @@
+$env:SOURCE_PACKAGES = "D:\source-packages"
