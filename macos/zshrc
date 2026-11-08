@@ -4,6 +4,8 @@ if [[ -f "$macos_dotfiles/zshrc.local" ]]; then
     source "$macos_dotfiles/zshrc.local"
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
 source "$macos_dotfiles/common/functions.zsh"
 source "$macos_dotfiles/common/aliases.zsh"
 source "$macos_dotfiles/common/paths.zsh"
